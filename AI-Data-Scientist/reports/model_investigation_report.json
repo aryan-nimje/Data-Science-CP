@@ -1,0 +1,177 @@
+{
+    "report_type": "AI Model Investigation Report",
+    "target": "Purchased",
+    "problem_type": "Binary Classification",
+    "model_performance": {
+        "model": "Logistic Regression",
+        "metrics": {
+            "cv_available": true,
+            "cv_folds": 5,
+            "accuracy_mean": 0.8,
+            "accuracy_std": 0.2449,
+            "precision_mean": 0.7,
+            "recall_mean": 0.8,
+            "f1_mean": 0.7333,
+            "f1_std": 0.3266,
+            "holdout_accuracy": 1.0,
+            "holdout_f1": 1.0
+        }
+    },
+    "feature_analysis": {
+        "method": "Absolute Coefficients",
+        "top_features": [
+            {
+                "feature": "numerical__Age",
+                "importance": 0.851897,
+                "direction": "Positive",
+                "importance_percentage": 32.03
+            },
+            {
+                "feature": "numerical__Experience",
+                "importance": 0.798275,
+                "direction": "Positive",
+                "importance_percentage": 30.02
+            },
+            {
+                "feature": "numerical__Income",
+                "importance": 0.419741,
+                "direction": "Positive",
+                "importance_percentage": 15.78
+            },
+            {
+                "feature": "categorical__City_Pune",
+                "importance": 0.29448,
+                "direction": "Negative",
+                "importance_percentage": 11.07
+            },
+            {
+                "feature": "categorical__City_Mumbai",
+                "importance": 0.288128,
+                "direction": "Positive",
+                "importance_percentage": 10.83
+            }
+        ]
+    },
+    "error_analysis": {
+        "total_rows": 11,
+        "correct_predictions": 9,
+        "incorrect_predictions": 2,
+        "error_percentage": 18.18,
+        "confusion_matrix": {
+            "labels": [
+                "No",
+                "Yes"
+            ],
+            "matrix": [
+                [
+                    4,
+                    1
+                ],
+                [
+                    1,
+                    5
+                ]
+            ]
+        },
+        "class_metrics": {
+            "No": {
+                "precision": 0.8,
+                "recall": 0.8,
+                "f1_score": 0.8,
+                "support": 5
+            },
+            "Yes": {
+                "precision": 0.8333,
+                "recall": 0.8333,
+                "f1_score": 0.8333,
+                "support": 6
+            }
+        },
+        "misclassified_rows": [
+            {
+                "Row": 1,
+                "Age": 25,
+                "Income": 35000,
+                "City": "Mumbai",
+                "Experience": 3,
+                "Purchased": "Yes",
+                "Constant": "A",
+                "Actual": "Yes",
+                "Predicted": "No"
+            },
+            {
+                "Row": 9,
+                "Age": 27,
+                "Income": 38000,
+                "City": "Mumbai",
+                "Experience": 4,
+                "Purchased": "No",
+                "Constant": "A",
+                "Actual": "No",
+                "Predicted": "Yes"
+            }
+        ]
+    },
+    "shap_analysis": {
+        "model": "LogisticRegression",
+        "base_value": 0.329609,
+        "positive_factors": [
+            {
+                "feature": "numerical__Age",
+                "shap_value": 0.557988,
+                "absolute_impact": 0.557988
+            },
+            {
+                "feature": "numerical__Experience",
+                "shap_value": 0.48699,
+                "absolute_impact": 0.48699
+            }
+        ],
+        "negative_factors": [
+            {
+                "feature": "categorical__City_Pune",
+                "shap_value": -0.133854,
+                "absolute_impact": 0.133854
+            },
+            {
+                "feature": "numerical__Income",
+                "shap_value": -0.126694,
+                "absolute_impact": 0.126694
+            },
+            {
+                "feature": "categorical__City_Mumbai",
+                "shap_value": -0.07858,
+                "absolute_impact": 0.07858
+            },
+            {
+                "feature": "categorical__City_Nashik",
+                "shap_value": -0.001261,
+                "absolute_impact": 0.001261
+            }
+        ]
+    },
+    "ai_insights": {
+        "model_insights": [
+            "The selected machine learning model is Logistic Regression.",
+            "Cross-validation accuracy was 80.00%.",
+            "Cross-validation F1 score was 73.33%."
+        ],
+        "feature_insights": [
+            "The most influential feature in the model is numerical__Age with a normalized importance of 32.03%.",
+            "The three most influential features are numerical__Age, numerical__Experience, numerical__Income."
+        ],
+        "error_insights": [
+            "The model made 2 incorrect predictions out of 11 analyzed rows.",
+            "The diagnostic error rate on the analyzed dataset was 18.18%."
+        ],
+        "shap_insights": [
+            "For the analyzed prediction, the strongest positive contributors were numerical__Age, numerical__Experience.",
+            "The strongest negative contributors were categorical__City_Pune, numerical__Income, categorical__City_Mumbai."
+        ],
+        "what_if_insights": [
+            "The feature Experience changed from 6 to 2.",
+            "The prediction changed from Yes to No after the input modification.",
+            "Model confidence decreased by 21.43 percentage points."
+        ]
+    }
+}
