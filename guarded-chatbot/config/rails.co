@@ -1,0 +1,23 @@
+define user greet
+  "hello"
+  "hi"
+  "hey there"
+
+define bot greet
+  "Hello! How can I help you today?"
+
+define flow greeting
+  user greet
+  bot greet
+
+define user ask politics
+  "who should I vote for?"
+  "which political party is best?"
+  "what do you think about the president?"
+
+define bot refuse politics
+  "I'd rather stay out of political opinions, but I'm happy to help with something else."
+
+define flow politics
+  user ask politics
+  bot refuse politics

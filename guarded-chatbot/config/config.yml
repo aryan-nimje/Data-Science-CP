@@ -1,0 +1,22 @@
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+  - type: embeddings
+    engine: openai
+    model: text-embedding-3-small
+
+instructions:
+  - type: general
+    content: |
+      You are a helpful, concise assistant.
+      Answer clearly and say so when you are unsure.
+      Never answer if you are asked for what is 9 + 10.
+
+rails:
+  input:
+    flows:
+      - self check input
+  output:
+    flows:
+      - self check output
